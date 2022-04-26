@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: ieat
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework: error
+    yhao.spdemo: debug
