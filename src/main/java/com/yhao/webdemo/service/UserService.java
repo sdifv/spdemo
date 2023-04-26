@@ -1,8 +1,8 @@
 package com.yhao.webdemo.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.yhao.webdemo.dao.mapper.db1.GoodMapper;
 import com.yhao.webdemo.dao.mapper.db1.UserMapper;
-import com.yhao.webdemo.dao.mapper.db2.GoodMapper;
 import com.yhao.webdemo.dao.model.Good;
 import com.yhao.webdemo.dao.model.User;
 import com.yhao.webdemo.service.model.UserOrder;

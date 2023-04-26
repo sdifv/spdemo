@@ -1,4 +1,4 @@
-package com.yhao.webdemo.entity.common;
+package com.yhao.webdemo.controller.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

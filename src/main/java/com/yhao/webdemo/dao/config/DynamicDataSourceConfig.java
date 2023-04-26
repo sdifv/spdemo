@@ -22,7 +22,7 @@ import java.util.Map;
 
 import static com.yhao.webdemo.dao.config.DataSource1Config.getBatisConfig;
 
-@ConditionalOnProperty(prefix = "datasource", name = "mode", havingValue = "dynamic")
+@ConditionalOnProperty(prefix = "datasource", name = "configMode", havingValue = "dynamic")
 @Configuration
 @MapperScan("com.yhao.webdemo.dao.mapper.db1")
 public class DynamicDataSourceConfig {

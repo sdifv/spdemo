@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,7 @@ import javax.sql.DataSource;
 
 import static com.yhao.webdemo.dao.config.DataSource1Config.getBatisConfig;
 
-
+@ConditionalOnProperty(prefix = "datasource", name = "enableMultiDBs", havingValue = "true")
 @Configuration
 @MapperScan(basePackages = "com.yhao.webdemo.dao.mapper.db2", sqlSessionTemplateRef = "db2SqlSessionTemplate")
 public class DataSource2Config {

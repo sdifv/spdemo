@@ -1,4 +1,4 @@
-package com.yhao.webdemo.exception;
+package com.yhao.webdemo.controller.exception;
 
 
 public class SourceNotFoundException extends RuntimeException {

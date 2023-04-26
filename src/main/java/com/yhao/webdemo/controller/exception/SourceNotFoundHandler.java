@@ -1,4 +1,4 @@
-package com.yhao.webdemo.exception;
+package com.yhao.webdemo.controller.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
