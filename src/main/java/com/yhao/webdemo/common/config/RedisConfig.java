@@ -10,9 +10,8 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 
 @EnableCaching  // 后续方法上可以基于注解实现缓存
@@ -29,13 +28,9 @@ public class RedisConfig extends CachingConfigurerSupport {
      */
 
     @Bean(name = "redisTemplate")
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+    public StringRedisTemplate redisTemplate(RedisConnectionFactory factory) {
+        StringRedisTemplate redisTemplate = new StringRedisTemplate();
         redisTemplate.setConnectionFactory(factory);
-
-        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-        // 1. 设置key的序列化方式
-        redisTemplate.setKeySerializer(stringRedisSerializer);
 
         Jackson2JsonRedisSerializer<Object> jsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
         ObjectMapper mapper = new ObjectMapper();
@@ -52,7 +47,6 @@ public class RedisConfig extends CachingConfigurerSupport {
         jsonRedisSerializer.setObjectMapper(mapper);
 
         redisTemplate.setValueSerializer(jsonRedisSerializer);
-        redisTemplate.setHashKeySerializer(stringRedisSerializer);
         redisTemplate.setHashValueSerializer(jsonRedisSerializer);
         return redisTemplate;
     }

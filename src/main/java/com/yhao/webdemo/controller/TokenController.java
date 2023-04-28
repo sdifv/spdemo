@@ -1,6 +1,6 @@
 package com.yhao.webdemo.controller;
 
-import com.yhao.webdemo.common.util.TokenUtil;
+import com.yhao.webdemo.common.distLock.TokenUtil;
 import com.yhao.webdemo.controller.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +13,13 @@ public class TokenController {
     private TokenUtil tokenUtil;
 
     @GetMapping("/getToken")
-    public Result<String> getToken(@RequestParam("uid") String uid) {
+    public Result getToken(@RequestParam("uid") String uid) {
         return Result.success(tokenUtil.generateToken(uid));
     }
 
     @PostMapping("/oncePost")
-    public Result<String> oncePost(@RequestHeader("token") String token, @RequestParam("uid") String uid) {
-        boolean valid = tokenUtil.validToken(token, uid);
+    public Result oncePost(@RequestHeader("token") String token) {
+        boolean valid = tokenUtil.validToken(token, "111");
         return valid ? Result.success("调用正常") : Result.success("调用失败");
     }
 

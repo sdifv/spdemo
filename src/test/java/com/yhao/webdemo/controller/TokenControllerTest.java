@@ -6,10 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestComponent;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -37,7 +35,6 @@ public class TokenControllerTest {
 
         for (int i = 0; i < 3; i++) {
             result = mockMvc.perform(MockMvcRequestBuilders.post("/tokenTest/oncePost")
-                                                             .param("uid", "111")
                                                              .header("token", token)
                                                              .accept(MediaType.APPLICATION_JSON_VALUE))
                     .andReturn().getResponse().getContentAsString();
